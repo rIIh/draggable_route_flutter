@@ -97,8 +97,8 @@ class DraggableRoute<T> extends PageRoute<T> {
     final theme = DraggableRouteTheme.of(context);
 
     if (!navigator!.userGestureInProgress) {
-      final dismissVelocity = theme.dismissVelocity;
-      final dismissDistance = theme.dismissDistance;
+      final dismissVelocity = routeSettings?.dismissDistance ?? theme.dismissVelocity;
+      final dismissDistance = routeSettings?.dismissDistance ?? theme.dismissDistance;
 
       final isFling = _velocity.distanceSquared > dismissVelocity.squared;
       final isFarAway = _offset.value.distanceSquared > dismissDistance.squared;

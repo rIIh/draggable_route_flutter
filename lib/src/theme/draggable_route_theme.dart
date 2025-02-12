@@ -113,8 +113,28 @@ class DraggableRouteSettings {
   /// drag slop on the edge on scrollable
   final double edgeSlop;
 
+  /// refer [DraggableRouteTheme.dismissDistance], the value in the runtime setting has the priority.
+  final double? dismissDistance;
+
+  /// refer [DraggableRouteTheme.dismissVelocity], the value in the runtime setting has the priority.
+  final double? dismissVelocity;
+
   const DraggableRouteSettings({
     required this.slop,
     required this.edgeSlop,
+    this.dismissDistance,
+    this.dismissVelocity,
   });
+
+  DraggableRouteSettings copyWith(
+      {double? slop,
+      double? edgeSlop,
+      double? dismissDistance,
+      double? dismissVelocity}) {
+    return DraggableRouteSettings(
+        slop: slop ?? this.slop,
+        edgeSlop: edgeSlop ?? this.edgeSlop,
+        dismissVelocity: dismissVelocity ?? this.dismissVelocity,
+        dismissDistance: dismissDistance ?? this.dismissDistance);
+  }
 }
